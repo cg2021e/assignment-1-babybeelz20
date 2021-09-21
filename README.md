@@ -2,3 +2,6 @@
 
 # Joystick
 ![alt text](https://github.com/cg2021e/assignment-1-babybeelz20/blob/main/assets/joy1.jpg?raw=true)
+![alt text](https://github.com/cg2021e/assignment-1-babybeelz20/blob/main/assets/joy2.jpg?raw=true)
+![alt text](https://github.com/cg2021e/assignment-1-babybeelz20/blob/main/assets/joy3.jpg?raw=true)
+![alt text](https://github.com/cg2021e/assignment-1-babybeelz20/blob/main/assets/joy4.jpg?raw=true)
