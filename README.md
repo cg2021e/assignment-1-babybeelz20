@@ -2,14 +2,16 @@
 
 # Eraser
 
-[Result](https://cg2021e.github.io/assignment-1-babybeelz20/)
+[Result](https://cg2021e.github.io/assignment-1-babybeelz20/assignment-1b/index.html)
 
 ![alt text](https://github.com/cg2021e/assignment-1-babybeelz20/blob/main/assets/eraser1.jpg?raw=true)
 ![alt text](https://github.com/cg2021e/assignment-1-babybeelz20/blob/main/assets/eraser2.jpg?raw=true)
 ![alt text](https://github.com/cg2021e/assignment-1-babybeelz20/blob/main/assets/eraser3.jpg?raw=true)
 ![alt text](https://github.com/cg2021e/assignment-1-babybeelz20/blob/main/assets/eraser4.jpg?raw=true)
 
-# Assignment 2
+# Assignment 1c
+
+[Result](https://cg2021e.github.io/assignment-1-babybeelz20/assignment-1c/index.html)
 
 Please continue your WebGL application on the same repository as the previous assignment (https://classroom.github.com/a/wxGcZEWk) with the following specifications: 
 
