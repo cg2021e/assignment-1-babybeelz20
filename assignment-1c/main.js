@@ -6,7 +6,7 @@ function main() {
 	// Define vertices data consisting of position and color properties
     var y_cube = [...box];
 	var vertices = [];
-
+	
 	var indices = [...indice_eraser, ...indice_box, ...indice_plane];
 
 	// Create a linked-list for storing the vertices data
@@ -211,15 +211,93 @@ function main() {
 
 	var uSwitchOnValue = 1.;
 	var uSwitchOn = gl.getUniformLocation(shaderProgram, "uSwitchOn");
-	
+	var cameraOrbit = 90;
+    var cameraDistance = 3;
+
 	function onKeyPressed(event) {
-		if(event.keyCode == 32) {
+		if(event.keyCode == 32) { // Space
 			if(uSwitchOnValue == 0.) {
 				uSwitchOnValue = 1.;
 			} else if(uSwitchOnValue == 1.) {
 				uSwitchOnValue = 0.;
 			}
 			gl.uniform1f(uSwitchOn, uSwitchOnValue);
+		}
+		if(event.keyCode == 87) { //W
+			for(let i=0;i<y_cube.length;i+=10) {
+                y_cube[i+2] -= 0.04;
+            }
+            lightPosition[2] -= 0.04;
+		}
+		if(event.keyCode == 65) { //A
+			for(let i=0;i<y_cube.length;i+=10) {
+                y_cube[i] -= 0.04;
+            }
+            lightPosition[0] -= 0.04;
+		}
+		if(event.keyCode == 83) { //S
+			for(let i=0;i<y_cube.length;i+=10) {
+                y_cube[i+2] += 0.04;
+            }
+            lightPosition[2] += 0.04;
+		}
+		if(event.keyCode == 68) { //D
+			for(let i=0;i<y_cube.length;i+=10) {
+                y_cube[i] += 0.04;
+            }
+            lightPosition[0] += 0.04;
+		}
+		if(event.keyCode == 37) { //left
+			cameraOrbit += 0.5
+            let cos = Math.cos(cameraOrbit*Math.PI/180.0);
+            let sin = Math.sin(cameraOrbit*Math.PI/180.0);
+            camera = [cameraDistance*cos, 0, cameraDistance*sin];
+            glMatrix.mat4.lookAt(
+                view,
+                camera,
+                camNow,
+                [0, 1, 0]
+            );
+            gl.uniformMatrix4fv(uView, false, view);
+		}
+		if(event.keyCode == 38) { //up
+			cameraDistance -= 0.1
+            let cos = Math.cos(cameraOrbit*Math.PI/180.0);
+            let sin = Math.sin(cameraOrbit*Math.PI/180.0);
+            camera = [cameraDistance*cos, 0, cameraDistance*sin];
+            glMatrix.mat4.lookAt(
+                view,
+                camera,
+                camNow,
+                [0, 1, 0]
+            );
+            gl.uniformMatrix4fv(uView, false, view);
+		}
+		if(event.keyCode == 39) { //right
+			cameraOrbit -= 0.5
+            let cos = Math.cos(cameraOrbit*Math.PI/180.0);
+            let sin = Math.sin(cameraOrbit*Math.PI/180.0);
+            camera = [cameraDistance*cos, 0, cameraDistance*sin];
+            glMatrix.mat4.lookAt(
+                view,
+                camera,
+                camNow,
+                [0, 1, 0]
+            );
+            gl.uniformMatrix4fv(uView, false, view);
+		}
+		if(event.keyCode == 40) { //down
+			cameraDistance += 0.1
+            let cos = Math.cos(cameraOrbit*Math.PI/180.0);
+            let sin = Math.sin(cameraOrbit*Math.PI/180.0);
+            camera = [cameraDistance*cos, 0, cameraDistance*sin];
+            glMatrix.mat4.lookAt(
+                view,
+                camera,     
+                camNow,
+                [0, 1, 0]     
+			);
+			gl.uniformMatrix4fv(uView, false, view);
 		}
 	}
 	document.addEventListener("keydown", onKeyPressed);
