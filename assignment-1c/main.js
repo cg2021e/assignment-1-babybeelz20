@@ -7,7 +7,7 @@ function main() {
     var y_cube = [...box];
 	var vertices = [];
 
-	var indices = [...indice_eraser, ...indice_box];
+	var indices = [...indice_eraser, ...indice_box, ...indice_plane];
 
 	// Create a linked-list for storing the vertices data
 	var vertexBuffer = gl.createBuffer();
@@ -205,7 +205,7 @@ function main() {
 	gl.uniform3fv(uViewerPosition, camera);
 
 	function render() {
-		vertices = [...eraser, ...y_cube];
+		vertices = [...eraser, ...y_cube, ...plane];
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 		gl.bufferData(
 			gl.ARRAY_BUFFER,
