@@ -203,7 +203,7 @@ function main() {
 		"uViewerPosition"
 	);
 	gl.uniform3fv(uViewerPosition, camera);
-
+	
 	function render() {
 		vertices = [...eraser, ...y_cube, ...plane];
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
