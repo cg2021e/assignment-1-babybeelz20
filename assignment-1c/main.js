@@ -56,6 +56,7 @@ function main() {
         uniform vec3 uLightPosition;
         uniform mat3 uNormalModel;
         uniform vec3 uViewerPosition;
+		uniform float uSwitchOn;
         void main() {
             vec3 ambient = uLightConstant * uAmbientIntensity;
             vec3 lightDirection = uLightPosition - vPosition;
@@ -76,6 +77,10 @@ function main() {
                 float specularIntensity = pow(cosPhi, vShininessConstant); 
                 specular = uLightConstant * specularIntensity;
             }
+			if (uSwitchOn == 0.) {
+				diffuse = vec3(0., 0., 0.);
+				specular = vec3(0., 0., 0.);
+			}
             vec3 phong = ambient + diffuse + specular;
             gl_FragColor = vec4(phong * vColor, 1.);
         }
@@ -203,6 +208,21 @@ function main() {
 		"uViewerPosition"
 	);
 	gl.uniform3fv(uViewerPosition, camera);
+
+	var uSwitchOnValue = 1.;
+	var uSwitchOn = gl.getUniformLocation(shaderProgram, "uSwitchOn");
+	
+	function onKeyPressed(event) {
+		if(event.keyCode == 32) {
+			if(uSwitchOnValue == 0.) {
+				uSwitchOnValue = 1.;
+			} else if(uSwitchOnValue == 1.) {
+				uSwitchOnValue = 0.;
+			}
+			gl.uniform1f(uSwitchOn, uSwitchOnValue);
+		}
+	}
+	document.addEventListener("keydown", onKeyPressed);
 	
 	function render() {
 		vertices = [...eraser, ...y_cube, ...plane];
